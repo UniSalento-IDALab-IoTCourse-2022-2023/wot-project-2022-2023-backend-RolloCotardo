@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  Backend:
+    image: openjdk:17-jdk-alpine
+    container_name: Backend
+    ports:
+      - 8080:8080
+      - 8000:8000
+    expose:
+      - "8000"
+    depends_on:
+      - mongoInfoDB
+    networks:
+      - my-net
+    volumes:
+      - ./build/libs/Backend-0.0.1-SNAPSHOT.jar:/app/app.jar
+    working_dir: /app
+    entrypoint: java -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 -jar /app/app.jar
+
+  mongoInfoDB:
+    image: mongo:5.0
+    container_name: mongoInfoDB
+    ports:
+      - 27017:27017
+    networks:
+      - my-net
+
+
+networks:
+  my-net:
+    driver:
+      "bridge"
+
+
+  
