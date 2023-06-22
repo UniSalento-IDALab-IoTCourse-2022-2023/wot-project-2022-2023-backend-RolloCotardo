@@ -44,7 +44,6 @@ try:
             "potenza": state[5]
         }
 
-
         # Effettua la richiesta POST
 
         if(int(dizionario.get('Potenza_sega') != 0)):
@@ -63,7 +62,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Tensione sega fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (float(dizionario.get('Allineamento_sega') < 0.025 or float(dizionario.get('Allineamento_sega') > 0.05))):
                 timestamp = str(datetime.now())
@@ -75,7 +85,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Allineamento sega fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Avanzamento_sega') < 50 or int(dizionario.get('Avanzamento_sega') > 60))):
                 timestamp = str(datetime.now())
@@ -87,7 +108,19 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Velocità avanzamento sega fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
+
 
             if (int(dizionario.get('Rotazione_sega') < 300 or int(dizionario.get('Rotazione_sega') > 400))):
                 timestamp = str(datetime.now())
@@ -99,7 +132,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Velocità rotazione sega fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Lubrificante_sega') < 30)):
                 timestamp = str(datetime.now())
@@ -111,7 +155,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Lubrificante sega fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Potenza_sega') < 750 or int(dizionario.get('Potenza_sega') > 975))):
                 timestamp = str(datetime.now())
@@ -122,6 +177,15 @@ try:
                     "valore": int(dizionario.get('Potenza_sega')),
                     "timestamp": timestamp
                 }
+
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/sega/1"
+                message = "Potenza sega fuori range, allontanarsi"
+                client.publish(topic, message)
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -155,7 +219,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/tornio/1"
+                message = "Allineamento tornio fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (float(dizionario.get('Vibrazioni_tornio') < 0.1 or float(dizionario.get('Vibrazioni_tornio') > 2))):
                 timestamp = str(datetime.now())
@@ -167,7 +242,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/tornio/1"
+                message = "Vibrazioni tornio fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Rotazione_tornio') < 1500 or int(dizionario.get('Rotazione_tornio') > 1600))):
                 timestamp = str(datetime.now())
@@ -179,7 +265,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/tornio/1"
+                message = "Velocità tornio fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Potenza_tornio') < 7000 or int(dizionario.get('Potenza_tornio') > 7500))):
                 timestamp = str(datetime.now())
@@ -191,7 +288,18 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/tornio/1"
+                message = "Potenza tornio fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
+
+
 
             if (int(dizionario.get('Lubrificante_tornio') < 30)):
                 timestamp = str(datetime.now())
@@ -203,19 +311,16 @@ try:
                     "timestamp": timestamp
                 }
 
+                # Configurazione del client MQTT
+                client = mqtt.Client()
+                # Connessione al broker MQTT
+                client.connect("192.168.1.25", 1883, 60)
+                # Invio di un messaggio MQTT
+                topic = "topic/allarme/tornio/1"
+                message = "Lubrificante tornio fuori range, allontanarsi"
+                client.publish(topic, message)
+
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
-
-
-        # Configurazione del client MQTT
-        '''client = mqtt.Client()
-        # Connessione al broker MQTT
-        client.connect("192.168.1.25", 1883, 60)
-        # Invio di un messaggio MQTT
-        topic = "topic/allarme"
-        stringa = json.dumps(dizionario)
-        message = stringa
-        client.publish(topic, message)'''
-
 
         sleep(5)
 
