@@ -23,7 +23,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
-                .authorizeRequests().requestMatchers("/api/info/saws", "/api/info/lathes", "/api/alarms").permitAll().
+                .authorizeRequests().requestMatchers("/api/**").permitAll().
                 anyRequest().authenticated().and().cors().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

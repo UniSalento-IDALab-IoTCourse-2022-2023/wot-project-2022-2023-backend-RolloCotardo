@@ -10,6 +10,10 @@ import it.unisalento.pas.backend.repositories.AlarmsRepository;
 import it.unisalento.pas.backend.repositories.LatheInfoRepository;
 import it.unisalento.pas.backend.repositories.SawInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
@@ -53,6 +57,26 @@ public class RestController {
         return saws;
     }
 
+    @RequestMapping(value="/info/saws/last", method=RequestMethod.GET)
+    public SawInfoDTO getLastSaw() {
+        Pageable pageable = PageRequest.of(0, 1, Sort.Direction.DESC, "id");
+        Page<SawInfo> page = sawInfoRepository.findAll(pageable);
+        SawInfoDTO sawInfoDTO = new SawInfoDTO();
+
+        if (page.hasContent()) {
+            SawInfo lastSaw = page.getContent().get(0);
+            sawInfoDTO.setId(lastSaw.getId());
+            sawInfoDTO.setAllineamento(lastSaw.getAllineamento());
+            sawInfoDTO.setAvanzamento(lastSaw.getAvanzamento());
+            sawInfoDTO.setTensione(lastSaw.getTensione());
+            sawInfoDTO.setRotazione(lastSaw.getRotazione());
+            sawInfoDTO.setLubrificante(lastSaw.getLubrificante());
+            sawInfoDTO.setPotenza(lastSaw.getPotenza());
+        }
+
+        return sawInfoDTO;
+    }
+
     @RequestMapping(value="/info/lathes", method= RequestMethod.GET)
     public List<LatheInfoDTO> getAllLathes() {
 
@@ -73,6 +97,25 @@ public class RestController {
         return lathes;
     }
 
+    @RequestMapping(value="/info/lathes/last", method=RequestMethod.GET)
+    public LatheInfoDTO getLastLathe() {
+        Pageable pageable = PageRequest.of(0, 1, Sort.Direction.DESC, "id");
+        Page<LatheInfo> page = latheInfoRepository.findAll(pageable);
+        LatheInfoDTO latheInfoDTO = new LatheInfoDTO();
+
+        if (page.hasContent()) {
+            LatheInfo lastLathe = page.getContent().get(0);
+            latheInfoDTO.setId(lastLathe.getId());
+            latheInfoDTO.setAllineamento(lastLathe.getAllineamento());
+            latheInfoDTO.setVibrazioni(lastLathe.getVibrazioni());
+            latheInfoDTO.setRotazione(lastLathe.getRotazione());
+            latheInfoDTO.setLubrificante(lastLathe.getLubrificante());
+            latheInfoDTO.setPotenza(lastLathe.getPotenza());
+        }
+
+        return latheInfoDTO;
+    }
+
 
     @RequestMapping(value="/alarms", method= RequestMethod.GET)
     public List<AlarmDTO> getAllAlarms() {
@@ -85,6 +128,7 @@ public class RestController {
             alarmDTO.setIdMacchinario(alarm.getIdMacchinario());
             alarmDTO.setTipologia(alarm.getTipologia());
             alarmDTO.setValore(alarm.getValore());
+            alarmDTO.setRange(alarm.getRange());
             alarmDTO.setTimestamp(alarm.getTimestamp());
 
             alarms.add(alarmDTO);
@@ -138,6 +182,7 @@ public class RestController {
         newAlarm.setIdMacchinario(alarmDTO.getIdMacchinario());
         newAlarm.setTipologia(alarmDTO.getTipologia());
         newAlarm.setValore(alarmDTO.getValore());
+        newAlarm.setRange(alarmDTO.getRange());
         newAlarm.setTimestamp(alarmDTO.getTimestamp());
 
         newAlarm = alarmsRepository.save(newAlarm);

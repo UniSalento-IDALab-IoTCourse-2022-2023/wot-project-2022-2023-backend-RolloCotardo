@@ -59,8 +59,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Tensione fuori range ottimale [1400-1500] psi",
                     "valore": int(dizionario.get('Tensione_sega')),
+                    "range": "1400-1500",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -70,6 +73,7 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Tensione sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -82,9 +86,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Allineamento lama fuori range ottimale [0.025-0.05] mm",
                     "valore": float(dizionario.get('Allineamento_sega')),
+                    "range": "0.025-0.05",
                     "timestamp": timestamp
                 }
 
+                '''
                 # Configurazione del client MQTT
                 client = mqtt.Client()
                 # Connessione al broker MQTT
@@ -93,6 +99,8 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Allineamento sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                '''
+
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -105,9 +113,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Velocità della lama fuori range ottimale [50-60] m/minuto",
                     "valore": int(dizionario.get('Avanzamento_sega')),
+                    "range": "50-60",
                     "timestamp": timestamp
                 }
 
+                '''
                 # Configurazione del client MQTT
                 client = mqtt.Client()
                 # Connessione al broker MQTT
@@ -116,6 +126,7 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Velocità avanzamento sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -129,8 +140,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Velocità di rotazione della lama fuori range ottimale [300-400] m/minuto",
                     "valore": int(dizionario.get('Rotazione_sega')),
+                    "range": "300-400",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -140,6 +154,8 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Velocità rotazione sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -152,8 +168,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Livello del lubrificante sotto al 30%",
                     "valore": int(dizionario.get('Lubrificante_sega')),
+                    "range": "> 30",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -163,6 +182,7 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Lubrificante sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -175,8 +195,11 @@ try:
                     "idMacchinario": "Sega1",
                     "tipologia": "Potenza della macchina furi range ottimale [750-975] W",
                     "valore": int(dizionario.get('Potenza_sega')),
+                    "range": "750-975",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -186,6 +209,8 @@ try:
                 topic = "topic/allarme/sega/1"
                 message = "Potenza sega fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -216,9 +241,11 @@ try:
                     "idMacchinario": "Tornio1",
                     "tipologia": "Allineamento fuori range ottimale [0.025-0,05] mm",
                     "valore": float(dizionario.get('Allineamento_tornio')),
+                    "range": "0.025-0,05",
                     "timestamp": timestamp
                 }
 
+                '''
                 # Configurazione del client MQTT
                 client = mqtt.Client()
                 # Connessione al broker MQTT
@@ -227,6 +254,8 @@ try:
                 topic = "topic/allarme/tornio/1"
                 message = "Allineamento tornio fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -239,8 +268,11 @@ try:
                     "idMacchinario": "Tornio1",
                     "tipologia": "Vibrazioni fuori range ottimale [0.1-2.0] mm/s",
                     "valore": float(dizionario.get('Vibrazioni_tornio')),
+                    "range": "0.1-2.0",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -250,6 +282,8 @@ try:
                 topic = "topic/allarme/tornio/1"
                 message = "Vibrazioni tornio fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -262,8 +296,11 @@ try:
                     "idMacchinario": "Tornio1",
                     "tipologia": "Velocità di rotazione fuori range ottimale [1500-1600] giri/minuto",
                     "valore": int(dizionario.get('Rotazione_tornio')),
+                    "range": "1500-1600",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -273,6 +310,8 @@ try:
                 topic = "topic/allarme/tornio/1"
                 message = "Velocità tornio fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -285,8 +324,12 @@ try:
                     "idMacchinario": "Tornio1",
                     "tipologia": "Potenza della macchina fuori range ottimale [7000-7500] W",
                     "valore": int(dizionario.get('Potenza_tornio')),
+                    "range": "7000-7500",
                     "timestamp": timestamp
                 }
+
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -296,6 +339,8 @@ try:
                 topic = "topic/allarme/tornio/1"
                 message = "Potenza tornio fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 
@@ -308,8 +353,11 @@ try:
                     "idMacchinario": "Tornio1",
                     "tipologia": "Livello del lubrificante sotto al 30%",
                     "valore": int(dizionario.get('Lubrificante_tornio')),
+                    "range": "> 30",
                     "timestamp": timestamp
                 }
+
+                '''
 
                 # Configurazione del client MQTT
                 client = mqtt.Client()
@@ -319,6 +367,8 @@ try:
                 topic = "topic/allarme/tornio/1"
                 message = "Lubrificante tornio fuori range, allontanarsi"
                 client.publish(topic, message)
+                
+                '''
 
                 requests.post("http://localhost:8080/api/alarms", json=payload_alarm)
 

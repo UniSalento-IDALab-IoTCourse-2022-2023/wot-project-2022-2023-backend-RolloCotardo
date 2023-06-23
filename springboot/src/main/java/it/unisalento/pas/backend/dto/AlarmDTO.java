@@ -15,6 +15,8 @@ public class AlarmDTO {
 
     float valore;
 
+    String range;
+
     String timestamp;
 
     public String getId() {
@@ -47,6 +49,14 @@ public class AlarmDTO {
 
     public void setValore(float valore) {
         this.valore = valore;
+    }
+
+    public String getRange() {
+        return range;
+    }
+
+    public void setRange(String range) {
+        this.range = range;
     }
 
     public String getTimestamp() {
