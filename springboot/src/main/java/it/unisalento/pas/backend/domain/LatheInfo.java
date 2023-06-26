@@ -8,7 +8,7 @@ public class LatheInfo {
 
     @Id
     String id;
-    String idMacchinario = "Tornio1";
+    String idMacchinario;
     float allineamento;
 
     float vibrazioni;
@@ -26,6 +26,10 @@ public class LatheInfo {
 
     public String getIdMacchinario() {
         return idMacchinario;
+    }
+
+    public void setIdMacchinario(String idMacchinario) {
+        this.idMacchinario = idMacchinario;
     }
 
     public float getAllineamento() {

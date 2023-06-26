@@ -8,7 +8,7 @@ public class SawInfo {
 
     @Id
     String id;
-    String idMacchinario = "Sega1";
+    String idMacchinario;
     int tensione;
     float allineamento;
     int avanzamento;
@@ -28,6 +28,11 @@ public class SawInfo {
     public String getIdMacchinario() {
         return idMacchinario;
     }
+
+    public void setIdMacchinario(String idMacchinario) {
+        this.idMacchinario = idMacchinario;
+    }
+
     public int getTensione() {
         return tensione;
     }

@@ -5,7 +5,7 @@ public class LatheInfoDTO {
 
     @Id
     String id;
-    String idMacchinario = "Tornio1";
+    String idMacchinario;
     float allineamento;
     float vibrazioni;
     int rotazione;
@@ -22,6 +22,10 @@ public class LatheInfoDTO {
 
     public String getIdMacchinario() {
         return idMacchinario;
+    }
+
+    public void setIdMacchinario(String idMacchinario) {
+        this.idMacchinario = idMacchinario;
     }
 
     public float getAllineamento() {

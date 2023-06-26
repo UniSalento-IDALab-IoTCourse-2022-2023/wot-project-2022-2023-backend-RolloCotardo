@@ -2,12 +2,15 @@ package it.unisalento.pas.backend.restcontrollers;
 
 import it.unisalento.pas.backend.domain.Alarm;
 import it.unisalento.pas.backend.domain.LatheInfo;
+import it.unisalento.pas.backend.domain.Machine;
 import it.unisalento.pas.backend.domain.SawInfo;
 import it.unisalento.pas.backend.dto.AlarmDTO;
 import it.unisalento.pas.backend.dto.LatheInfoDTO;
+import it.unisalento.pas.backend.dto.MachineDTO;
 import it.unisalento.pas.backend.dto.SawInfoDTO;
 import it.unisalento.pas.backend.repositories.AlarmsRepository;
 import it.unisalento.pas.backend.repositories.LatheInfoRepository;
+import it.unisalento.pas.backend.repositories.MachinesRepository;
 import it.unisalento.pas.backend.repositories.SawInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,6 +38,9 @@ public class RestController {
     @Autowired
     AlarmsRepository alarmsRepository;
 
+    @Autowired
+    MachinesRepository machinesRepository;
+
 
     @RequestMapping(value="/info/saws", method= RequestMethod.GET)
     public List<SawInfoDTO> getAllSaws() {
@@ -44,6 +50,7 @@ public class RestController {
         for(SawInfo sawInfo : sawInfoRepository.findAll()) {
             SawInfoDTO sawInfoDTO = new SawInfoDTO();
             sawInfoDTO.setId(sawInfo.getId());
+            sawInfoDTO.setIdMacchinario(sawInfo.getIdMacchinario());
             sawInfoDTO.setAllineamento(sawInfo.getAllineamento());
             sawInfoDTO.setAvanzamento(sawInfo.getAvanzamento());
             sawInfoDTO.setTensione(sawInfo.getTensione());
@@ -66,6 +73,7 @@ public class RestController {
         if (page.hasContent()) {
             SawInfo lastSaw = page.getContent().get(0);
             sawInfoDTO.setId(lastSaw.getId());
+            sawInfoDTO.setIdMacchinario(lastSaw.getIdMacchinario());
             sawInfoDTO.setAllineamento(lastSaw.getAllineamento());
             sawInfoDTO.setAvanzamento(lastSaw.getAvanzamento());
             sawInfoDTO.setTensione(lastSaw.getTensione());
@@ -85,6 +93,7 @@ public class RestController {
         for(LatheInfo latheInfo : latheInfoRepository.findAll()) {
             LatheInfoDTO latheInfoDTO = new LatheInfoDTO();
             latheInfoDTO.setId(latheInfo.getId());
+            latheInfoDTO.setIdMacchinario(latheInfo.getIdMacchinario());
             latheInfoDTO.setAllineamento(latheInfo.getAllineamento());
             latheInfoDTO.setVibrazioni(latheInfo.getVibrazioni());
             latheInfoDTO.setRotazione(latheInfo.getRotazione());
@@ -106,6 +115,7 @@ public class RestController {
         if (page.hasContent()) {
             LatheInfo lastLathe = page.getContent().get(0);
             latheInfoDTO.setId(lastLathe.getId());
+            latheInfoDTO.setIdMacchinario(lastLathe.getIdMacchinario());
             latheInfoDTO.setAllineamento(lastLathe.getAllineamento());
             latheInfoDTO.setVibrazioni(lastLathe.getVibrazioni());
             latheInfoDTO.setRotazione(lastLathe.getRotazione());
@@ -142,6 +152,7 @@ public class RestController {
     public SawInfoDTO addSawInfo(@RequestBody SawInfoDTO sawInfoDTO) {
 
         SawInfo newSawInfo = new SawInfo();
+        newSawInfo.setIdMacchinario(sawInfoDTO.getIdMacchinario());
         newSawInfo.setAllineamento(sawInfoDTO.getAllineamento());
         newSawInfo.setAvanzamento(sawInfoDTO.getAvanzamento());
         newSawInfo.setTensione(sawInfoDTO.getTensione());
@@ -161,6 +172,7 @@ public class RestController {
     public LatheInfoDTO addLatheInfo(@RequestBody LatheInfoDTO latheInfoDTO) {
 
         LatheInfo newLatheInfo = new LatheInfo();
+        newLatheInfo.setIdMacchinario(latheInfoDTO.getIdMacchinario());
         newLatheInfo.setAllineamento(latheInfoDTO.getAllineamento());
         newLatheInfo.setVibrazioni(latheInfoDTO.getVibrazioni());
         newLatheInfo.setRotazione(latheInfoDTO.getRotazione());
@@ -190,5 +202,21 @@ public class RestController {
         alarmDTO.setId(newAlarm.getId());
 
         return alarmDTO;
+    }
+
+
+    @RequestMapping(value="/machines", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public MachineDTO addMachine(@RequestBody MachineDTO machineDTO) {
+
+        Machine machine = new Machine();
+        machine.setIdMacchinario(machineDTO.getIdMacchinario());
+        machine.setMac_beacon(machineDTO.getMac_beacon());
+        machine.setAllarmi(machineDTO.getAllarmi());
+
+        machine = machinesRepository.save(machine);
+
+        machineDTO.setId(machine.getId());
+
+        return machineDTO;
     }
 }
