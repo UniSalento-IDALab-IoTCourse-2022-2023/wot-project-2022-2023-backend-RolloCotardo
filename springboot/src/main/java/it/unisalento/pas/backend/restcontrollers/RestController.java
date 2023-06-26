@@ -211,6 +211,7 @@ public class RestController {
         Machine machine = new Machine();
         machine.setIdMacchinario(machineDTO.getIdMacchinario());
         machine.setMac_beacon(machineDTO.getMac_beacon());
+        machine.setTopic(machineDTO.getTopic());
         machine.setAllarmi(machineDTO.getAllarmi());
 
         machine = machinesRepository.save(machine);

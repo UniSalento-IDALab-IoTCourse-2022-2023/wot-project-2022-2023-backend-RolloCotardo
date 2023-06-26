@@ -7,10 +7,10 @@ class Lathe:
     chiavi = ['Allineamento_tornio', 'Vibrazioni_tornio', 'Rotazione_tornio', 'Lubrificante_tornio',
               'Potenza_tornio']
 
-    idMacchinario = ""
 
-    def __init__(self, info, idMacchinario):
+    def __init__(self, info, idMacchinario, topic):
         self.idMacchinario = idMacchinario
+        self.topic = topic
         self.sendInfo(info)
 
 
@@ -114,7 +114,7 @@ class Lathe:
         # Connessione al broker MQTT
         client.connect("192.168.1.25", 1883, 60)
         # Invio di un messaggio MQTT
-        client.publish(topic, message)
+        client.publish(self.topic, message)
         '''
 
 

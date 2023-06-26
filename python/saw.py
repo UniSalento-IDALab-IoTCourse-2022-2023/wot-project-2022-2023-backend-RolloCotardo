@@ -6,10 +6,10 @@ class Saw:
 
     chiavi = ['Tensione_sega', 'Allineamento_sega', 'Avanzamento_sega', 'Rotazione_sega', 'Lubrificante_sega', 'Potenza_sega']
 
-    idMacchinario = ""
 
-    def __init__(self, info, idMacchinario):
+    def __init__(self, info, idMacchinario, topic):
         self.idMacchinario = idMacchinario
+        self.topic = topic
         self.sendInfo(info)
 
 
@@ -129,7 +129,7 @@ class Saw:
         # Connessione al broker MQTT
         client.connect("192.168.1.25", 1883, 60)
         # Invio di un messaggio MQTT
-        client.publish(topic, message)
+        client.publish(self.topic, message)
         '''
 
 

@@ -12,6 +12,7 @@ public class Machine {
     String idMacchinario;
 
     String mac_beacon;
+    String topic;
 
     String[] allarmi;
 
@@ -37,6 +38,14 @@ public class Machine {
 
     public void setMac_beacon(String mac_beacon) {
         this.mac_beacon = mac_beacon;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String[] getAllarmi() {
