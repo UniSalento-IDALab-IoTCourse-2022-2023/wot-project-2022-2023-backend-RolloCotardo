@@ -1,22 +1,14 @@
 package it.unisalento.pas.backend.restcontrollers;
 
-import it.unisalento.pas.backend.domain.Alarm;
 import it.unisalento.pas.backend.domain.LatheInfo;
-import it.unisalento.pas.backend.domain.Machine;
-import it.unisalento.pas.backend.domain.SawInfo;
-import it.unisalento.pas.backend.dto.AlarmDTO;
 import it.unisalento.pas.backend.dto.LatheInfoDTO;
-import it.unisalento.pas.backend.dto.MachineDTO;
-import it.unisalento.pas.backend.dto.SawInfoDTO;
-import it.unisalento.pas.backend.repositories.AlarmsRepository;
 import it.unisalento.pas.backend.repositories.LatheInfoRepository;
-import it.unisalento.pas.backend.repositories.MachinesRepository;
-import it.unisalento.pas.backend.repositories.SawInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
@@ -33,8 +25,7 @@ public class LatheRestController {
     LatheInfoRepository latheInfoRepository;
 
 
-
-
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/", method= RequestMethod.GET)
     public List<LatheInfoDTO> getAllLathes() {
 
@@ -56,6 +47,7 @@ public class LatheRestController {
         return lathes;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last", method=RequestMethod.GET)
     public LatheInfoDTO getLastLathe() {
         Pageable pageable = PageRequest.of(0, 1, Sort.Direction.DESC, "id");
@@ -95,8 +87,9 @@ public class LatheRestController {
         return latheInfoDTO;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last/{machine}")
-    public LatheInfoDTO getAdminByEmail(@PathVariable String machine) {
+    public LatheInfoDTO getLastByMachine(@PathVariable String machine) {
 
         LatheInfo[] latheInfos = latheInfoRepository.findByIdMacchinario(machine);
 

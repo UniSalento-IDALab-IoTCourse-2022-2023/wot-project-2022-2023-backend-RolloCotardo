@@ -123,14 +123,14 @@ class Saw:
 
     def sendAlarm(self, message, topic, payload):
 
-        '''
+
         # Configurazione del client MQTT
         client = mqtt.Client()
         # Connessione al broker MQTT
         client.connect("192.168.1.25", 1883, 60)
         # Invio di un messaggio MQTT
         client.publish(self.topic, message)
-        '''
+
 
 
         requests.post("http://localhost:8080/api/alarms/", json=payload)
