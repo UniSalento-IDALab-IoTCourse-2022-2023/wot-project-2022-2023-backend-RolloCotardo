@@ -10,4 +10,6 @@ public interface MachinesRepository extends MongoRepository<Machine, String> {
 
     public Optional<Machine> findById(String id);
 
+    public Machine findByIdMacchinario(String machine);
+
 }

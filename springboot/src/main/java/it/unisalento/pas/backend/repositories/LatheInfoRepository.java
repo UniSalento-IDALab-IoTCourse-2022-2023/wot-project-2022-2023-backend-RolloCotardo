@@ -10,4 +10,6 @@ public interface LatheInfoRepository extends MongoRepository<LatheInfo, String> 
 
     public Optional<LatheInfo> findById(String id);
 
+    public LatheInfo[] findByIdMacchinario(String machine);
+
 }

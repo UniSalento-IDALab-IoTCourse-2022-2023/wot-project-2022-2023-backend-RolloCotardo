@@ -29,7 +29,7 @@ class Lathe:
         # Effettua la richiesta POST
 
         if (int(info.get('Potenza_tornio') != 0)):
-            requests.post("http://localhost:8080/api/info/lathes", json=payload_lathe)
+            requests.post("http://localhost:8080/api/info/lathes/", json=payload_lathe)
 
         self.check(info)
 
@@ -50,7 +50,7 @@ class Lathe:
                 }
 
 
-                self.sendAlarm("Vibrazioni tornio fuori range, allontanarsi", "topic/allarme/tornio/1", payload_alarm)
+                self.sendAlarm("Vibrazioni tornio fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (float(info.get('Vibrazioni_tornio') < 0.1 or float(info.get('Vibrazioni_tornio') > 2))):
                 timestamp = str(datetime.now())
@@ -63,7 +63,7 @@ class Lathe:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Vibrazioni tornio fuori range, allontanarsi", "topic/allarme/tornio/1", payload_alarm)
+                self.sendAlarm("Vibrazioni tornio fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Rotazione_tornio') < 1500 or int(info.get('Rotazione_tornio') > 1600))):
                 timestamp = str(datetime.now())
@@ -76,7 +76,7 @@ class Lathe:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Velocità tornio fuori range, allontanarsi", "topic/allarme/tornio/1", payload_alarm)
+                self.sendAlarm("Velocità tornio fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Potenza_tornio') < 7000 or int(info.get('Potenza_tornio') > 7500))):
                 timestamp = str(datetime.now())
@@ -89,7 +89,7 @@ class Lathe:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Potenza tornio fuori range, allontanarsi", "topic/allarme/tornio/1", payload_alarm)
+                self.sendAlarm("Potenza tornio fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Lubrificante_tornio') < 30)):
                 timestamp = str(datetime.now())
@@ -102,7 +102,7 @@ class Lathe:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Lubrificante tornio fuori range, allontanarsi", "topic/allarme/tornio/1", payload_alarm)
+                self.sendAlarm("Lubrificante tornio fuori range, allontanarsi", self.topic, payload_alarm)
 
 
 
@@ -118,4 +118,4 @@ class Lathe:
         '''
 
 
-        requests.post("http://localhost:8080/api/alarms", json=payload)
+        requests.post("http://localhost:8080/api/alarms/", json=payload)

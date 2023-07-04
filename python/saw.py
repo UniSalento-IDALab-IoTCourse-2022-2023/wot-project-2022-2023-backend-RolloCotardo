@@ -29,7 +29,7 @@ class Saw:
         # Effettua la richiesta POST
 
         if (int(info.get('Potenza_sega') != 0)):
-            response = requests.post("http://localhost:8080/api/info/saws", json=payload_saw)
+            response = requests.post("http://localhost:8080/api/info/saws/", json=payload_saw)
 
         self.check(info)
 
@@ -49,7 +49,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Tensione sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Tensione sega fuori range, allontanarsi", self.topic, payload_alarm)
 
 
             if (
@@ -64,7 +64,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Allineamento sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Allineamento sega fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Avanzamento_sega') < 50 or int(info.get('Avanzamento_sega') > 60))):
                 timestamp = str(datetime.now())
@@ -77,7 +77,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Velocità avanzamento sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Velocità avanzamento sega fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Rotazione_sega') < 300 or int(info.get('Rotazione_sega') > 400))):
                 timestamp = str(datetime.now())
@@ -90,7 +90,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Velocità rotazione sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Velocità rotazione sega fuori range, allontanarsi", self.topic, payload_alarm)
 
             if (int(info.get('Lubrificante_sega') < 30)):
                 timestamp = str(datetime.now())
@@ -103,7 +103,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Lubrificante sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Lubrificante sega fuori range, allontanarsi", self.topic, payload_alarm)
 
 
             if (int(info.get('Potenza_sega') < 750 or int(info.get('Potenza_sega') > 975))):
@@ -117,7 +117,7 @@ class Saw:
                     "timestamp": timestamp
                 }
 
-                self.sendAlarm("Potenza sega fuori range, allontanarsi", "topic/allarme/sega/1", payload_alarm)
+                self.sendAlarm("Potenza sega fuori range, allontanarsi", self.topic, payload_alarm)
 
 
 
@@ -133,4 +133,4 @@ class Saw:
         '''
 
 
-        requests.post("http://localhost:8080/api/alarms", json=payload)
+        requests.post("http://localhost:8080/api/alarms/", json=payload)

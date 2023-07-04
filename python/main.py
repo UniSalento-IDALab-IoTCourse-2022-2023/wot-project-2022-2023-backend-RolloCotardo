@@ -40,8 +40,8 @@ try:
         print(info_lathe)
 
 
-        sega = saw.Saw(info_saw, "Sega1", "topic/saw/1")
-        tornio = lathe.Lathe(info_lathe, "Tornio1","topic/lathe/1")
+        sega = saw.Saw(info_saw, "Sega1", "allarme/sega/1")
+        tornio = lathe.Lathe(info_lathe, "Tornio1","allarme/tornio/1")
 
         sleep(5)
 

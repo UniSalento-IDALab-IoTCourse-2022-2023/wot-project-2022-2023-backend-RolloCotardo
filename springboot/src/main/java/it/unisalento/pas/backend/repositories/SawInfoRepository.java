@@ -9,4 +9,6 @@ public interface SawInfoRepository extends MongoRepository<SawInfo, String> {
 
     public Optional<SawInfo> findById(String id);
 
+    public SawInfo[] findByIdMacchinario(String machine);
+
 }
