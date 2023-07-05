@@ -22,14 +22,14 @@ L’applicazione Android, predisposta già all’avvio per la ricezione di messa
 ### Frontend
 L’amministratore del sistema può accedere tramite login alla dashboard, ovvero una web application in Angular che racchiude lo storico dei dati ricevuti dai macchinari e gli eventuali allarmi. La dashboard interrogherà il backend tramite delle richieste GET per ottenere i dati. È possibile visualizzare dei grafici, leggere le misure dei parametri dei macchinari in tempo reale e analizzare tutti gli allarmi ricevuti filtrandoli in base alle esigenze.
 
-# Link alle altre componenti
+## Link alle altre componenti
 * Applicazione Android: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/wot-project-2022-2023-AndroidApplication-RolloCotardo
 * Python che simula sega a nastro: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/wot-project-2022-2023-raspberryS-RolloCotardo
 * Python che simula tornio: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/wot-project-2022-2023-raspberryT-RolloCotardo
 * Frontend: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/wot-project-2022-2023-Frontend-RolloCotardo
 * Link alla presentazione del progetto: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/wot-project-presentation-RolloCotardo
 
-# Cosa c'è nella presente repository
+## Cosa c'è nella presente repository
 In questa repository è presente il Backend utilizzato dal sistema. 
 Esso è composto da due parti principali: 
 * **Applicazione Python** che si occuperà della ricezione dei dati Modbud dai macchinari. Questa applicazione effettuerà dei controlli ulteriori sui dati e vedrà quali sono i dati che escono fuori range, generando quindi gli allarmi corrispondenti. Questi dati verranno mandati tramite MQTT al Broker MQTT installato in locale (Mosquitto MQTT) che smisterà i messaggi ai vari subscriber in base ai topic. Infine questa applicazione richiama le API POST implementate in Springboot per aggiungere i dati e gli allarmi in un database. 
