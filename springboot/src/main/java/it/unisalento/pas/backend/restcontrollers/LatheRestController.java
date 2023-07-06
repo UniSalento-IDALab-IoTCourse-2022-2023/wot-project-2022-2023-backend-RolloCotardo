@@ -48,6 +48,29 @@ public class LatheRestController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(value="/{machine}", method= RequestMethod.GET)
+    public List<LatheInfoDTO> getLathesById(@PathVariable String machine) {
+
+        List<LatheInfoDTO> lathes = new ArrayList<>();
+
+        for(LatheInfo lathesInfo : latheInfoRepository.findByIdMacchinario(machine)) {
+            LatheInfoDTO latheInfoDTO = new LatheInfoDTO();
+            latheInfoDTO.setId(lathesInfo.getId());
+            latheInfoDTO.setIdMacchinario(lathesInfo.getIdMacchinario());
+            latheInfoDTO.setAllineamento(lathesInfo.getAllineamento());
+            latheInfoDTO.setVibrazioni(lathesInfo.getVibrazioni());
+            latheInfoDTO.setRotazione(lathesInfo.getRotazione());
+            latheInfoDTO.setLubrificante(lathesInfo.getLubrificante());
+            latheInfoDTO.setPotenza(lathesInfo.getPotenza());
+
+            lathes.add(latheInfoDTO);
+        }
+
+        return lathes;
+    }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last", method=RequestMethod.GET)
     public LatheInfoDTO getLastLathe() {
         Pageable pageable = PageRequest.of(0, 1, Sort.Direction.DESC, "id");

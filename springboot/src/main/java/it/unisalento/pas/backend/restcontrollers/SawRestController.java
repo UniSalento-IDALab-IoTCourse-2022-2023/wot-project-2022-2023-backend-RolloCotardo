@@ -49,6 +49,29 @@ public class SawRestController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(value="/{machine}", method= RequestMethod.GET)
+    public List<SawInfoDTO> getById(@PathVariable String machine) {
+
+        List<SawInfoDTO> saws = new ArrayList<>();
+
+        for(SawInfo sawsInfo : sawInfoRepository.findByIdMacchinario(machine)) {
+            SawInfoDTO sawInfoDTO = new SawInfoDTO();
+            sawInfoDTO.setId(sawsInfo.getId());
+            sawInfoDTO.setIdMacchinario(sawsInfo.getIdMacchinario());
+            sawInfoDTO.setAllineamento(sawsInfo.getAllineamento());
+            sawInfoDTO.setAvanzamento(sawsInfo.getAvanzamento());
+            sawInfoDTO.setTensione(sawsInfo.getTensione());
+            sawInfoDTO.setRotazione(sawsInfo.getRotazione());
+            sawInfoDTO.setLubrificante(sawsInfo.getLubrificante());
+            sawInfoDTO.setPotenza(sawsInfo.getPotenza());
+
+            saws.add(sawInfoDTO);
+        }
+
+        return saws;
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last", method=RequestMethod.GET)
     public SawInfoDTO getLastSaw() {
         Pageable pageable = PageRequest.of(0, 1, Sort.Direction.DESC, "id");

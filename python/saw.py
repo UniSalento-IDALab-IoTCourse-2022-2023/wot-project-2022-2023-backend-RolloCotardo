@@ -127,7 +127,7 @@ class Saw:
         # Configurazione del client MQTT
         client = mqtt.Client()
         # Connessione al broker MQTT
-        client.connect("192.168.1.25", 1883, 60)
+        client.connect("test.mosquitto.org", 1883, 60)
         # Invio di un messaggio MQTT
         client.publish(self.topic, message)
 
