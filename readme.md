@@ -37,17 +37,17 @@ Esso è composto da due parti principali:
 
 Per eseguire queste due componenti è sufficiente: 
 1) clonare la presente repository
-2) modificare l'indirizzo IP nel codice con l'IP del proprio Broker MQTT 
-3) spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi: 
+2) aprire il progetto nella cartella "springboot" con un IDE come IntellijIdea e buildare usando il modulo bootJar
+3) spostarsi nella cartella "springboot" da terminale e lanciare il seguente comando:
+```
+docker compose up
+```
+aprendo docker noteremo che saranno up sia il container di Springboot che il container di Mongo
+4) modificare l'indirizzo IP nel codice python con l'IP del proprio Broker MQTT 
+5) spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi: 
 ```
 pip install pyModbusTCP
 pip install requests
 pip install paho-mqtt
 python main.py
 ```
-4) aprire il progetto nella cartella "springboot" con un IDE come IntellijIdea e buildare usando il modulo bootJar
-5)  spostarsi nella cartella "springboot" da terminale e lanciare il seguente comando:
-```
-docker compose up
-```
-aprendo docker noteremo che saranno up sia il container di Springboot che il container di Mongo
