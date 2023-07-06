@@ -43,8 +43,8 @@ Per eseguire queste due componenti è sufficiente:
 docker compose up
 ```
 aprendo docker noteremo che saranno up sia il container di Springboot che il container di Mongo
-4. modificare l'indirizzo IP nel codice python con l'IP del proprio Broker MQTT 
-5. spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi: 
+4. modificare l'indirizzo IP nel codice python con l'IP del proprio Broker MQTT
+5. spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi:
 ```
 pip install pyModbusTCP
 pip install requests
