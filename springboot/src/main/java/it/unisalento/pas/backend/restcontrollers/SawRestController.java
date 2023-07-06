@@ -51,7 +51,7 @@ public class SawRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/{machine}", method= RequestMethod.GET)
-    public List<SawInfoDTO> getById(@PathVariable String machine) {
+    public List<SawInfoDTO> getSawInfoByMachine(@PathVariable String machine) {
 
         List<SawInfoDTO> saws = new ArrayList<>();
 
@@ -120,7 +120,7 @@ public class SawRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last/{machine}")
-    public SawInfoDTO getLastByMachine(@PathVariable String machine) {
+    public SawInfoDTO getLastSawByMachine(@PathVariable String machine) {
 
         SawInfo[] sawsInfo = sawInfoRepository.findByIdMacchinario(machine);
 

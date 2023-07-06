@@ -50,7 +50,7 @@ public class LatheRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/{machine}", method= RequestMethod.GET)
-    public List<LatheInfoDTO> getLathesById(@PathVariable String machine) {
+    public List<LatheInfoDTO> getLathesInfoByMachine(@PathVariable String machine) {
 
         List<LatheInfoDTO> lathes = new ArrayList<>();
 
@@ -116,7 +116,7 @@ public class LatheRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/last/{machine}")
-    public LatheInfoDTO getLastByMachine(@PathVariable String machine) {
+    public LatheInfoDTO getLastLatheByMachine(@PathVariable String machine) {
 
         LatheInfo[] latheInfos = latheInfoRepository.findByIdMacchinario(machine);
 

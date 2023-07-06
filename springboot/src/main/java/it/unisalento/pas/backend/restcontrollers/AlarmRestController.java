@@ -41,7 +41,7 @@ public class AlarmRestController {
 
 
     @RequestMapping(value="/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public AlarmDTO addLatheInfo(@RequestBody AlarmDTO alarmDTO) {
+    public AlarmDTO addAlarm(@RequestBody AlarmDTO alarmDTO) {
 
         Alarm newAlarm = new Alarm();
         newAlarm.setIdMacchinario(alarmDTO.getIdMacchinario());
@@ -59,7 +59,7 @@ public class AlarmRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/find/{machine}")
-    public List<AlarmDTO> getAlarmByMachine(@PathVariable String machine) {
+    public List<AlarmDTO> getAlarmsByMachine(@PathVariable String machine) {
 
         List<AlarmDTO> alarms = new ArrayList<>();
 
