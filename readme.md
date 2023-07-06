@@ -36,15 +36,15 @@ Esso è composto da due parti principali:
 * **Applicazione Springboot** che implementa tutte le API, sia POST (utilizzate dall'applicazione Python per aggiungere i dati e gli allarmi al database) che le GET (utilizzate dal Frontend per ottenere i dati dal Backend ed elaborarli). Le API GET sono caratterizzate dall'annotazione @Preauthorize che permetterà loro di essere richiamate solo da un amministratore che abbia prima effettuato l'accesso al sistema (token JWT)
 
 Per eseguire queste due componenti è sufficiente: 
-1) clonare la presente repository
-2) aprire il progetto nella cartella "springboot" con un IDE come IntellijIdea e buildare usando il modulo bootJar
-3) spostarsi nella cartella "springboot" da terminale e lanciare il seguente comando:
+1. clonare la presente repository
+2. aprire il progetto nella cartella "springboot" con un IDE come IntellijIdea e buildare usando il modulo bootJar
+3. spostarsi nella cartella "springboot" da terminale e lanciare il seguente comando:
 ```
 docker compose up
 ```
 aprendo docker noteremo che saranno up sia il container di Springboot che il container di Mongo
-4) modificare l'indirizzo IP nel codice python con l'IP del proprio Broker MQTT 
-5) spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi: 
+4. modificare l'indirizzo IP nel codice python con l'IP del proprio Broker MQTT 
+5. spostarsi nella cartella "python" da terminale e lanciare i seguenti comandi: 
 ```
 pip install pyModbusTCP
 pip install requests
