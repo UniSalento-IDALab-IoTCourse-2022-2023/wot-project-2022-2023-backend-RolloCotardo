@@ -41,6 +41,7 @@ public class SawRestController {
             sawInfoDTO.setRotazione(sawInfo.getRotazione());
             sawInfoDTO.setLubrificante(sawInfo.getLubrificante());
             sawInfoDTO.setPotenza(sawInfo.getPotenza());
+            sawInfoDTO.setTimestamp(sawInfo.getTimestamp());
 
             saws.add(sawInfoDTO);
         }
@@ -64,6 +65,7 @@ public class SawRestController {
             sawInfoDTO.setRotazione(sawsInfo.getRotazione());
             sawInfoDTO.setLubrificante(sawsInfo.getLubrificante());
             sawInfoDTO.setPotenza(sawsInfo.getPotenza());
+            sawInfoDTO.setTimestamp(sawsInfo.getTimestamp());
 
             saws.add(sawInfoDTO);
         }
@@ -88,6 +90,7 @@ public class SawRestController {
             sawInfoDTO.setRotazione(lastSaw.getRotazione());
             sawInfoDTO.setLubrificante(lastSaw.getLubrificante());
             sawInfoDTO.setPotenza(lastSaw.getPotenza());
+            sawInfoDTO.setTimestamp(lastSaw.getTimestamp());
         }
 
         return sawInfoDTO;
@@ -106,6 +109,7 @@ public class SawRestController {
         newSawInfo.setRotazione(sawInfoDTO.getRotazione());
         newSawInfo.setLubrificante(sawInfoDTO.getLubrificante());
         newSawInfo.setPotenza(sawInfoDTO.getPotenza());
+        newSawInfo.setTimestamp(sawInfoDTO.getTimestamp());
 
         newSawInfo = sawInfoRepository.save(newSawInfo);
 
@@ -132,6 +136,7 @@ public class SawRestController {
         sawInfoDTO.setAvanzamento(sawsInfo[lastIndex].getAvanzamento());
         sawInfoDTO.setLubrificante(sawsInfo[lastIndex].getLubrificante());
         sawInfoDTO.setPotenza(sawsInfo[lastIndex].getPotenza());
+        sawInfoDTO.setTimestamp(sawsInfo[lastIndex].getTimestamp());
 
         return sawInfoDTO;
     }

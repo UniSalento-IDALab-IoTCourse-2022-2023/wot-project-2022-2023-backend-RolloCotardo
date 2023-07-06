@@ -16,6 +16,8 @@ class Lathe:
 
     def sendInfo(self, info):
 
+        timestamp = str(datetime.now())
+
         # Dati da inviare nella richiesta POST
         payload_lathe = {
             "idMacchinario": self.idMacchinario,
@@ -24,6 +26,7 @@ class Lathe:
             "rotazione": info[self.chiavi[2]],
             "lubrificante": info[self.chiavi[3]],
             "potenza": info[self.chiavi[4]],
+            "timestamp": timestamp
         }
 
         # Effettua la richiesta POST

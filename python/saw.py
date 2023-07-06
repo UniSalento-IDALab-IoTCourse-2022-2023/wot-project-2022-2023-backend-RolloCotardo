@@ -15,6 +15,8 @@ class Saw:
 
     def sendInfo(self, info):
 
+        timestamp = str(datetime.now())
+
         # Dati da inviare nella richiesta POST
         payload_saw = {
             "idMacchinario": self.idMacchinario,
@@ -24,6 +26,7 @@ class Saw:
             "rotazione": info[self.chiavi[3]],
             "lubrificante": info[self.chiavi[4]],
             "potenza": info[self.chiavi[5]],
+            "timestamp": timestamp
         }
 
         # Effettua la richiesta POST

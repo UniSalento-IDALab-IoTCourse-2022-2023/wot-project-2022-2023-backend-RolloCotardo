@@ -12,8 +12,8 @@ public class SawInfoDTO {
     int avanzamento;
     int rotazione;
     int lubrificante;
-
     int potenza;
+    String timestamp;
 
     public String getId() {
         return id;
@@ -77,5 +77,13 @@ public class SawInfoDTO {
 
     public void setPotenza(int potenza) {
         this.potenza = potenza;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -40,6 +40,7 @@ public class LatheRestController {
             latheInfoDTO.setRotazione(latheInfo.getRotazione());
             latheInfoDTO.setLubrificante(latheInfo.getLubrificante());
             latheInfoDTO.setPotenza(latheInfo.getPotenza());
+            latheInfoDTO.setTimestamp(latheInfo.getTimestamp());
 
             lathes.add(latheInfoDTO);
         }
@@ -62,6 +63,7 @@ public class LatheRestController {
             latheInfoDTO.setRotazione(lathesInfo.getRotazione());
             latheInfoDTO.setLubrificante(lathesInfo.getLubrificante());
             latheInfoDTO.setPotenza(lathesInfo.getPotenza());
+            latheInfoDTO.setTimestamp(lathesInfo.getTimestamp());
 
             lathes.add(latheInfoDTO);
         }
@@ -86,6 +88,7 @@ public class LatheRestController {
             latheInfoDTO.setRotazione(lastLathe.getRotazione());
             latheInfoDTO.setLubrificante(lastLathe.getLubrificante());
             latheInfoDTO.setPotenza(lastLathe.getPotenza());
+            latheInfoDTO.setTimestamp(lastLathe.getTimestamp());
         }
 
         return latheInfoDTO;
@@ -102,6 +105,7 @@ public class LatheRestController {
         newLatheInfo.setRotazione(latheInfoDTO.getRotazione());
         newLatheInfo.setLubrificante(latheInfoDTO.getLubrificante());
         newLatheInfo.setPotenza(latheInfoDTO.getPotenza());
+        newLatheInfo.setTimestamp(latheInfoDTO.getTimestamp());
 
         newLatheInfo = latheInfoRepository.save(newLatheInfo);
 
@@ -127,6 +131,7 @@ public class LatheRestController {
         latheInfoDTO.setVibrazioni(latheInfos[lastIndex].getVibrazioni());
         latheInfoDTO.setLubrificante(latheInfos[lastIndex].getLubrificante());
         latheInfoDTO.setPotenza(latheInfos[lastIndex].getPotenza());
+        latheInfoDTO.setTimestamp(latheInfos[lastIndex].getTimestamp());
 
         return latheInfoDTO;
     }
